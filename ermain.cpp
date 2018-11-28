@@ -81,7 +81,7 @@ void Outp(){
 }
 
 void Mainmenu(){
-	string statement="press p to practice, i to insert and q to exit.";
+	string statement="English Recitation Privacy Project \n written by SYCstudio \n version 0.1-alpha \n\npress p to practice, i to insert and q to exit.";
 	do{
 		cout<<statement<<endl;
 		char ch=getchar();
