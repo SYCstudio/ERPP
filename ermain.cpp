@@ -20,8 +20,10 @@ int random(int l,int r);
 void Init();
 void Mainmenu();
 void Outp();
+void Help();
 void Practice();
 void Insert();
+void OutFormat();
 
 int main(){
 	Init();
@@ -81,17 +83,27 @@ void Outp(){
 }
 
 void Mainmenu(){
-	string statement="English Recitation Privacy Project \n written by SYCstudio \n version 0.1-alpha \n\npress p to practice, i to insert and q to exit.";
+	string statement="English Recitation Privacy Project \n written by SYCstudio \n version 0.1-beta";
 	do{
 		cout<<statement<<endl;
-		char ch=getchar();
-		if (ch=='p') Practice();
-		else if (ch=='i') Insert();
-		else if (ch=='q') break;
+		cout<<"words total : "<<W.size()<<endl<<endl;
+		string Input;cin>>Input;
+		if (Input=="p") Practice();
+		else if (Input=="i") Insert();
+		else if (Input=="q") break;
+		else if (Input=="h") Help();
+		else if (Input=="l") OutFormat();
+		else if (Input=="s") Outp();
 		system("clear");
 	}
 	while (1);
 	return;
+}
+
+void Help(){
+	system("clear");
+	cout<<"p - practice.\ni - insert a new word.\nl - output the wordlist.\ns - save to the disk\nq - exit."<<endl;
+	getchar();getchar();return;
 }
 
 void Practice(){
@@ -118,7 +130,7 @@ void Practice(){
 			cout<<"en to cn mode."<<endl;
 			cout<<W[id].en<<" ["<<W[id].phs<<"]"<<endl;
 			cout<<"cn:";cin>>Input;
-			W[id].outcninaline();
+			cout<<endl<<"ans:";W[id].outcninaline();
 		}
 		else if (opt==2){
 			if (cntoen==0){
@@ -127,6 +139,9 @@ void Practice(){
 			cout<<"cn to en mode."<<endl;
 			W[id].outcninaline();
 			cout<<"en:";cin>>Input;
+			cout<<endl;
+			if (Input==W[id].en) cout<<"accepted."<<endl;
+			else cout<<"wrong answer."<<endl;
 			cout<<"en:"<<W[id].en<<" ["<<W[id].phs<<"]"<<endl;
 		}
 		else if (opt==3){
@@ -146,7 +161,10 @@ void Practice(){
 			cout<<"phs to en mode."<<endl;
 			cout<<"["<<W[id].phs<<"] ";W[id].outcninaline();
 			cout<<"en:";cin>>Input;
-			cout<<W[id].en<<endl;
+			cout<<endl;
+			if (Input==W[id].en) cout<<"accepted."<<endl;
+			else cout<<"wrong answer."<<endl;
+			cout<<"en:";cout<<W[id].en<<endl;
 		}
 		getchar();getchar();
 	}
@@ -164,4 +182,12 @@ void Insert(){
 		I.V.push_back(make_pair(s1,s2));
 	}
 	W.push_back(I);return;
+}
+
+void OutFormat(){
+	system("clear");
+	for (int i=0,sz=W.size();i<sz;i++){
+		cout<<W[i].en<<" ["<<W[i].phs<<"] ";W[i].outcninaline();
+	}
+	getchar();getchar();return;
 }
