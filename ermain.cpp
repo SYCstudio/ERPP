@@ -83,7 +83,7 @@ void Outp(){
 }
 
 void Mainmenu(){
-	string statement="English Recitation Privacy Project \n written by SYCstudio \n version 0.1-beta";
+	string statement="English Recitation Privacy Project \n written by SYCstudio \n version 1.0-mayuri";
 	do{
 		cout<<statement<<endl;
 		cout<<"words total : "<<W.size()<<endl<<endl;
